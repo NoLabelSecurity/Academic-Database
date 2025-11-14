@@ -1,0 +1,451 @@
+Entity Connections with Crow's Foot Notation
+
+   Entity Connections
+
+    Here’s a revised overview of the entity connections based on the provided tables and their data. I’ve corrected the relationships using the appropriate Crow's Foot notation.
+
+### Corrected ERD Connections
+
+1. **Address**
+   - State >──│
+   - Person │──│
+   - ZipCode >──<
+
+2. **Completion**
+   - Grade >──│
+   - Student │──<
+   - Section │──<
+   - Fulfillment │──│
+
+3. **ConType**
+   - Email │──<
+   - Address │──<
+   - Phone │──<
+
+4. **Course**
+   - Subject >──│
+   - Section │──<
+   - Requirement >──< 
+   - PreReq ───<
+
+5. **Credential**
+   - Degree Type >──│
+   - Department >──│
+   - Student │──<
+   - Graduation >──│
+   - Requirement >──<
+
+6. **Degree Type**
+   - Credential │──<
+
+7. **Department**
+   - Faculty │──<
+   - Credential │──<
+
+8. **Email**
+   - Person >──│
+   - ConType >──│
+
+9. **Faculty**
+   - Department >──│
+   - Person │──│
+   - Section │──<
+
+10. **Fulfillment**
+    - Completion │──│
+    - Requirement │──<
+
+11. **Gender**
+    - Person │──<
+
+12. **Graduation**
+    - Student │──│
+    - Credential │──│
+
+13. **Grade**
+    - Completion │──<
+
+14. **Person**
+    - Gender >──│
+    - Address │──│
+    - Phone │──<
+    - Email │──<
+    - Faculty │──│
+    - Student │──│
+
+15. **Phone**
+    - Person >──│
+    - ConType >──│
+
+16. **PreReq**
+    - Course │──< 
+    - Subject │──<
+
+17. **Requirement**
+    - Course │──<
+    - Fulfillment │──│
+    - Credential >──<
+
+18. **Section**
+    - Course >──│
+    - Faculty >──│
+    - Student │──<
+    - Year >──│
+    - Semester │──<
+
+19. **Semester**
+    - Term >──│
+    - Year >──│
+    - Section │──<
+
+20. **State**
+    - ZipCode │──<
+
+21. **Student**
+    - Person │──│
+    - Completion │──<
+    - Section │──<
+    - Graduation │──│
+
+22. **Subject**
+    - Course │──<
+    - Department >──│
+    - PreReq │──<
+
+23. **Term**
+    - Semester │──<
+
+24. **Year**
+    - Semester │──<
+    - Section │──<
+
+25. **ZipCode**
+    - Address │──<
+    - State >──│
+
+
+
+
+Address
+Completion
+ConType
+Course
+Credential
+DegType
+Department
+Email
+Faculty
+Fulfillment
+Gender
+Grade
+Graduation
+Person
+Phone
+PreReq
+Requirement
+Section
+Semester
+State
+Student
+Subject
+Term
+Year
+ZipCode
+
+
+
+
+Address
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Add_ID		PK	INT		Y		Auto increment
+Add_House		VC	20	Y		
+Add_Street		VC	20	Y		
+Zip_code	FK	CHAR		Y		FK: zipcode
+Per_Id		FK	INT				FK: Person
+CT_ID		FK	INT				FK: ConType
+
+
+Completion
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Cmp_ID		PK	INT		Y		Auto increment
+Per_ID		FK			Y		FK: student
+Sec_ID		FK			Y		FK: section
+Grd_Sym		FK			N		FK: grade
+
+
+ConType
+Attribute Name	Key	Type	Size	Req	Format	Comment
+CT_ID		PK	INT		Y		Auto increment
+CT_Desc		VC	20	Y		Contact type
+
+
+Course
+Attribute Name	Key	Type	Size	Req	Format	Comment
+CRS_ID		PK	INT		Y		Autonumber
+Crs_Num		INT	3	Y		
+Sub_Abbr	FK	C	3	Y		FK: subject
+Crs_Desc		VC	200	N		
+Crs_Title		VC	25	Y		
+CrS_Hrs		INT		Y		
+
+
+Credential
+Attribute Name	Key	Type	Size	Req	Format	Comment
+CRD_ID		PK	INT		Y		Auto increment
+CRD_Title		VC	25	Y		
+DT_id		FK			Y		FK: DegType
+CRD_Year		INT	4	Y		Year of requirements
+DPT_ID		FK			Y		FK: Department
+
+
+DegType
+Attribute Name	Key	Type	Size	Req	Format	Comment
+DT_ID		PK	INT		Y		Auto increment
+DT_Title		VC	15	Y		
+DT_Level		INT	2	Y		(yrs of higher education)
+DT_Abbr		CHAR	5			Deg Type Abbr
+
+
+Department
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Dpt_ID		PK	INT		Y		Auto increment
+Dpt_Name		VC	35	Y		
+Per_ID		FK					FK: faculty (dept chair)
+
+
+Email
+Attribute Name	Key	Type	Size	Req	Format	Comment
+eMail_ID	PK	INT		Y		Auto increment
+eMail_User		VC	25	Y		
+eMail_Domain		VC	20	Y	@ required	
+Per_Id		FK					FK: Person
+CT_ID		FK					FK: ConType
+
+
+Faculty
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Per_ID		PK/FK					FK: person
+Dpt_ID		FK			Y		FK: department (works for)
+
+
+Fulfillment
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Ful_ID		PK	INT		Y		Auto increment
+Req_ID		FK			Y		FK: requirement
+CMP_ID		FK			Y		FK: completion
+
+
+Gender
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Gen_Code	PK	C	1	Y		Gender Code
+Gen_Desc		VC	10	Y		
+
+Values: F = FEMALE, M = MALE, O = OTHER
+
+
+Grade
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Grd_Sym		PK	CHAR	1	Y		
+Grd_Desc		VC	20	Y		
+Grd_Credit		BOOL		Y		Counts toward grad?
+Grd_Pts		INT		Y		
+Grd_GPA		BOOL		Y		Counts in GPA calc?
+
+
+Graduation
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Grad_ID		PK	INT		Y		Auto increment
+Per_ID		FK			Y		FK: student
+CRD_ID		FK			Y		FK: credential	
+Grad_Date		D		Y		Date of graduation
+
+
+Person
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Per_ID		PK	INT		Y			Auto increment
+Per_LastName		VC	20	Y		
+Per_FirstName		VC	20	Y		
+Per_MaidenName		VC	20			
+Per_PrefName		VC	20			
+Gen_Code	FK	C	1				FK: gender
+Per_DOB			D		Y	Mm/dd/yyyy	
+
+
+Phone
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Pho_ID		PK	INT		Y		Auto increment
+Pho_AreaCode		INT	3			
+Pho_Exchange		INT	3	Y		
+Pho_Extension		INT	4	Y		
+Per_Id		FK					FK: Person
+CT_ID		FK					FK: ConType
+
+
+PreReq
+Attribute Name	Key	Type	Size	Req	Format	Comment
+PR_ID		PK	INT		Y		Auto increment
+CRS_ID		FK			Y		FK: course
+PreReq		FK			Y		FK: prereq course
+
+
+Requirement
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Req_ID		PK	INT		Y		Auto increment
+Crs_ID		FK			Y		FK: course
+CRD_ID		FK			Y		FK: credential	
+
+
+Section
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Sec_ID		PK	INT		Y		Auto increment
+CRS_ID		FK			Y		FK: course
+SEM_ID		FK			Y		FK: semester
+Per_ID		FK			Y		FK: faculty
+Sec_Capacity		INT		Y		
+
+
+ZipCode
+Attribute Name	Key	Type	Size	Req	Format	Comment
+Zip_Code	PK	CHAR	10	Y	Nnnnn-nnnn	
+Zip_City		VC	20	Y		
+St_Code		FK	C	2	Y		FK: State
+
+
+
+
+
+
+
+
+We will be using XAMPP with the MySQL module to create and populate a database from within the terminal on Windows OS. There will be a total of 5 MySQL scripts that will populate the database by creating tables, inserting static data, inserting dummy (test) data which will come from a previous assignment, insert my personal information (my student data), and generate a report once the database is completed. 
+
+We will start by opening the XAMPP client and starting the MySQL module then opening a terminal and entering into MySQL Marina DB. After creating a database which we will call five_scripts we will select to use the database. From that point we will use the source command with the proper file directory address to execute the schema_definition script to create the tables. 
+
+The schema_definition.sql creation script should create the tables in the correct order so that the Query will OK for each table. But from the terminal the show tables command should display all 25 tables in alphabetical order starting with Address and Ending with ZipCode, regardless of how they are ordered in the script. 
+
+The next script, seed_static_data.sql, will populate static (unchanging) data into the database accurately and consecutive to the creation scripts execution. The static data values will be data relating to the tables and fields. (create relevant static data for each table and every field within them.)
+
+The third script, dummy_data_pop.sql, will populate the database with dummy (test) data with the four students listed in the previous normalization exercise. (reference "dummy data")
+
+ 
+create_db.sql
+seed_static.sql
+
+
+
+
+
+
+MySQL -u root
+show databases;
+create database five_script;
+use five_script;
+source G:/Database Scripts/create_db.sql;
+show tables;
+
+
+
+
+
+
+drop database five_script;
+
+
+
+
+
+
+
+
+
+
+FirstName	LastName	AdressType	Address			City		State	Zip	PhoneType 	PhoneNumber	TotalHours	Standing	CoursePrefix	CourseNumber	CourseName			Term	Year	Grade	Tnumber(PersonID)
+John		Doe		Home		123 Main Street		Clemson		SC	25779	Mobile 		940-1234	18		Sophomore	CPT		114		Computers And Programming	Fall 	2017	A	T10004537
+													Home 		657-0152					CPT		167		Programming and Logic		Fall 	2017	F	
+													Work 		646-1548					CPT		167		Programming and Logic		Spring 	2017	C	
+																					CPT		170		Microcomputer Applications I	Fall 	2017	B	
+																					ENG		155		Communications I		Fall 	2017	B	
+																					MAT		155		College Math			Spring 	2017	C	
+																					CPT		270		Microcomputer Applications II	Spring 	2017	A	
+
+
+Sally		Smith		Home		101 Elm St		Anderson	SC	29624	Mobile 		940-8854	12		Freshman	CPT		114		Computers And Programming	Fall 	2017	B	T10054259
+				Parents		146 3rd Ave		Washington	DC	40010	Home 		646-8788					CPT		170		Microcomputer Applications I 	Fall 	2017	B	
+													Parents 	357-5578					CPT		270		Microcomputer Applications II	Spring 	2017	B	
+																					ENG		155		Communications I		Summer 	2017	B	
+	
+
+Wade		Hampton		Campus		146 Mechanic ST		Pendelton	SC	25776	Mobile 		677-1234	6		Freshman	ENG		155		Communications I		Summer 	2017	A	T12004522
+																					CPT		114		Computers And Programming	Summer 	2017	C	
+																					MAT		155		College Math			Summer 	2017	C	
+
+
+John		Doe, Jr		Home		123 Main St		Clemson		SC	25779	Home 		657-0152	3		Unclassified	CPT		170		Microcomputer Applications I	Fall 	2017	W	T10876345
+
+
+
+
+
+Brian		Lorick		Home		135 Lake Becky Rd.	Mountain Rest   SC	29664	Office		651-0196			Junior		CPT		242		Database			Fall	2024	A	T00190596								
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+Student	info		
+	Tnumber(Per_ID)	First	Last	Suffix
+	T10004537	John	Doe	
+	T10054259	Sally	Smith	
+	T12004522	Wade	Hampton	
+	T10876345	John	Doe	Jr.
+
+
+
+				
+Address	info				
+AddID (PK)	Tnumber (FK)	Ctype	Hnum	Sname		Zip (FK)
+1		T10004537	H	123	Main		25779
+2		T10054259	H	101	Elm		29624
+2		T10054259	P	146	3rd Ave		40010
+3		T12004522	C	146	Mechanic	25776
+4		T10876345	H	123	Main		25779
+
+
+
+
+Completion info					
+Tnumber		Sub_Abbr	Crs_Num	Semester	Year	Grade
+T10004537	CPT		114	Fall		2017	A
+T10004537	CPT		167	Fall		2017	F
+T10004537	CPT		167	Spring		2017	C
+T10004537	CPT		170	Fall		2017	B
+T10004537	ENG		155	Fall		2017	B
+T10004537	MAT		155	Spring		2017	C
+T10004537	CPT		270	Spring		2017	A
+T10054259	CPT		114	Fall		2017	B
+T10054259	CPT		170	Fall		2017	B
+T10054259	CPT		270	Spring		2017	B
+T10054259	ENG		155	Summer		2017	B
+T12004522	ENG		155	Summer		2017	A
+T12004522	CPT		114	Summer		2017	C
+T12004522	MAT		155	Summer		2017	C
+T10876345	CPT		170	Fall		2017	W
+
