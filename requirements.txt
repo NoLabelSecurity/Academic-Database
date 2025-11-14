@@ -1,0 +1,24 @@
+# Core database connector for MySQL/MariaDB
+mysql-connector-python==8.3.0
+
+# OR use PyMySQL instead (uncomment if you prefer)
+# PyMySQL==1.1.0
+
+# ORM / query builder (optional but common)
+SQLAlchemy==2.0.30
+
+# Environment variable support
+python-dotenv==1.0.1
+
+# For running CLI scripts
+click==8.1.7
+
+# Testing
+pytest==7.4.4
+
+# Optional: formatting & linting
+black==24.3.0
+flake8==7.0.0
+
+# If your scripts export / import CSV, Excel, etc.
+pandas==2.2.1
