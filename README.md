@@ -9,7 +9,7 @@
 <p align="center">
   <a href="#project-description">Project Description</a> •
   <a href="#key-features">Key Features</a> •
-  <a href="#technology-stack">Tech Stack</a>
+  <a href="#technology-stack">Tech Stack</a> •
 </p>
 
 <!-- Demo GIFs Side by Side -->
@@ -19,14 +19,14 @@
       <td align="center">
         <img src="Assets/gifs/terminal select.gif" 
              alt="AcademicDB Terminal Demo" 
-             width="500" 
-             height="300">
+             width="475" 
+             height="275">
       </td>
       <td align="center">
-        <img src="Assets/gifs/logo.gif" 
-             alt="Assets/gifs/forms_view.gif" 
-             width="500" 
-             height="300">
+        <img src="Assets/gifs/forms_view.gif" 
+             alt="AcademicDB Forms View Demo" 
+             width="475" 
+             height="275">
       </td>
     </tr>
   </table>
