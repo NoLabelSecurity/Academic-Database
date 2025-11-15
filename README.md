@@ -218,7 +218,40 @@ This project showcases a comprehensive technology stack involving full-stack web
 
 ## Tech Stack
 
-**Frontend**: React, Tailwind CSS, Redux  
-**Backend**: Node.js, Express, MongoDB  
-**Cloud & DevOps**: AWS (S3, CloudFront), Docker  
-**Other**: OAuth2.0, WebSockets
+**Frontend**:  
+[![Access][Access-badge]][Access-url]
+
+**Backend**:  
+[![MariaDB][MariaDB-badge]][MariaDB-url]  
+[![SQL][SQL-badge]][SQL-url]
+
+**Cloud & DevOps**:  
+[![XAMPP][XAMPP-badge]][XAMPP-url]  
+[![Windows][Windows-badge]][Windows-url]
+
+**Other**:  
+[![Notepad++][NotepadPP-badge]][NotepadPP-url]  
+[![ODBC][ODBC-badge]][ODBC-url]
+
+
+[Access-badge]: https://img.shields.io/badge/MS%20Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white
+[Access-url]: https://www.microsoft.com/en-us/microsoft-365/access
+
+[MariaDB-badge]: https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white
+[MariaDB-url]: https://mariadb.org/
+
+[XAMPP-badge]: https://img.shields.io/badge/XAMPP-FB7A24?style=for-the-badge&logo=xampp&logoColor=white
+[XAMPP-url]: https://www.apachefriends.org/
+
+[NotepadPP-badge]: https://img.shields.io/badge/Notepad++-90E59A?style=for-the-badge&logo=notepadplusplus&logoColor=black
+[NotepadPP-url]: https://notepad-plus-plus.org/
+
+[SQL-badge]: https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=database&logoColor=white
+[SQL-url]: https://en.wikipedia.org/wiki/SQL
+
+[Windows-badge]: https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white
+[Windows-url]: https://www.microsoft.com/windows
+
+[ODBC-badge]: https://img.shields.io/badge/ODBC-006699?style=for-the-badge&logo=databricks&logoColor=white
+[ODBC-url]: https://learn.microsoft.com/en-us/sql/odbc/microsoft/open-database-connectivity-odbc
+
