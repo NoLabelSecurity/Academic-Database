@@ -13,14 +13,14 @@
       <td align="center">
         <img src="Assets/gifs/terminal select.gif" 
              alt="AcademicDB Terminal Demo" 
-             width="475" 
-             height="275">
+             width="auto" 
+             height="auto">
       </td>
       <td align="center">
         <img src="Assets/gifs/forms_view.gif" 
              alt="AcademicDB Forms View Demo" 
-             width="475" 
-             height="275">
+             width="auto" 
+             height="auto">
       </td>
     </tr>
   </table>
