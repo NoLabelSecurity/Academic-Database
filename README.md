@@ -1,6 +1,9 @@
 <!-- Project Logo -->
 <p align="center">
-  <img src="Assets/gifs/logo.gif" alt="AcademicDB Logo" width="225" height="200">
+  <img src="Assets/gifs/logo.gif" 
+    alt="AcademicDB Logo" 
+    width="225" 
+    height="200">
 </p>
 
 <p align="center">
@@ -9,9 +12,24 @@
   <a href="#technology-stack">Tech Stack</a>
 </p>
 
-<!-- Demo GIF -->
+<!-- Demo GIFs Side by Side -->
 <p align="center">
-  <img src="Assets/gifs/terminal select.gif" alt="AcademicDB Terminal Demo" align="middle" width="575" height="325">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="Assets/gifs/terminal select.gif" 
+             alt="AcademicDB Terminal Demo" 
+             width="500" 
+             height="300">
+      </td>
+      <td align="center">
+        <img src="Assets/gifs/logo.gif" 
+             alt="Assets/gifs/forms_view.gif" 
+             width="500" 
+             height="300">
+      </td>
+    </tr>
+  </table>
 </p>
 
 ## Project Description
