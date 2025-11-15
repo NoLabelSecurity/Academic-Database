@@ -1,7 +1,18 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/512px-YouTube_full-color_icon_%282017%29.svg.png" alt="" align="middle" width="225" height="150"><h1 align="center">AcademicDB</h1>
-<p align="center"><a href="#project-description">Project Description</a> - <a href="#key-features">Key Features</a> - <a href="#technology-stack">Tech Stack</a></p>
+<!-- Project Logo -->
+<p align="center">
+  <img src="Assets/gifs/logo.gif" alt="AcademicDB Logo" width="225" height="200">
+</p>
 
-<img src="https://repolaunch.vercel.app/assets/img/yt.webp" alt="" align="middle" width="auto" height="auto">
+<p align="center">
+  <a href="#project-description">Project Description</a> •
+  <a href="#key-features">Key Features</a> •
+  <a href="#technology-stack">Tech Stack</a>
+</p>
+
+<!-- Demo GIF -->
+<p align="center">
+  <img src="Assets/gifs/terminal select.gif" alt="AcademicDB Terminal Demo" align="middle" width="575" height="325">
+</p>
 
 ## Project Description
 
@@ -17,36 +28,113 @@ AcademicDB is designed for educational institutions, researchers, and administra
 
 ## Key Components
 
-### **1. Microsoft Access Frontend (Forms + Queries + Reports)**
-Access serves as the primary user interface layer and includes:
-- Input forms for student, faculty, course, and enrollment data  
-- Navigation menus and switchboards  
-- Query-based views for searching and filtering records  
-- Automated reports for exporting academic summaries  
-- VBA modules (optional) for enhanced logic or UI automation  
+### **1. Microsoft Access Frontend (Forms, Queries, Reports)**
+The Access frontend serves as the primary user interface for interacting with the database.  
+It provides a structured and user-friendly environment for entering, reviewing, and managing academic records.  
+Key elements include:
 
-### **2. MariaDB Backend (via XAMPP)**
-The backend is powered by **MariaDB**, offering:
-- Full ACID-compliant relational storage  
-- Support for constraints, foreign keys, cascading rules  
-- High performance for indexing, large datasets, and relational joins  
-- Compatibility with MySQL syntax, tools, and utilities  
+- **Data Entry Forms:**  
+  Organized interfaces for students, courses, faculty, subjects, grades, and enrollment data.
 
-The Access frontend connects to MariaDB using ODBC, providing real-time data access while maintaining a smooth desktop-driven workflow.
+- **Navigation Panels / Switchboards:**  
+  Allow quick access to key sections of the system.
 
-### **3. SQL Schema & Script Set**
-All database structures are written manually in `.sql` files using **Notepad++** for clean version-controlled editing.  
-Scripts include:
-- Table creation statements  
-- Constraints and foreign keys  
-- Views and indexes  
-- Seed data  
-- Stored procedures and triggers (if used)
+- **Queries:**  
+  Predefined and dynamic Access queries for filtering, searching, and summarizing academic data.
 
-Scripts are executed using:
-## Key Components
+- **Reports:**  
+  Printable academic reports (student lists, class schedules, course rosters, etc.).
 
-UserForm
+- **ODBC Connectivity:**  
+  Access communicates with MariaDB in real time through an ODBC DSN configuration.
+
+---
+
+### **2. MariaDB Relational Database (via XAMPP)**
+MariaDB functions as the backend data engine, hosting all academic tables and enforcing data integrity.  
+The XAMPP environment ensures local hosting, full control, and offline operation.
+
+**Core functions include:**
+
+- **Relational Data Storage:**  
+  Well-organized tables for Students, Courses, Faculty, Subjects, Departments, Grade Levels, Enrollments, and supporting metadata.
+
+- **Foreign Key Constraints:**  
+  Ensures accurate relationships (e.g., students ↔ grades, courses ↔ departments).
+
+- **Indexed Performance:**  
+  Indexed fields make searches and joins efficient, even with large datasets.
+
+- **ACID Compliance:**  
+  Prevents data corruption and guarantees reliable transactions.
+
+---
+
+### **3. SQL Schema & Script Library**
+All database structures are defined and maintained through a fully scripted SQL environment, written manually in Notepad++.
+
+This includes:
+
+- **Table Creation Scripts**  
+- **Primary/Foreign Key Constraints**  
+- **Insert Scripts for Lookup Tables**  
+- **Views and Data Dictionaries**  
+- **Stored Procedures / Triggers** (if implemented)  
+- **Data Export and Verification Scripts**  
+
+Scripts are executed via the MySQL terminal using commands like:
+  mysql -u root -p
+  SOURCE /path/to/schema.sql;
+  SOURCE /path/to/insert_data.sql;
+  SOURCE /path/to/select_all.sql;
+
+
+This ensures the database is fully reproducible, version-controlled, and portable.
+
+---
+
+### **4. XAMPP Server Environment**
+XAMPP provides the MariaDB server runtime and administrative tools.
+
+**Key responsibilities:**
+
+- Hosting MariaDB locally  
+- Allowing command-line SQL access  
+- Centralizing configuration files  
+- Ensuring a fully offline, secure environment  
+- Letting developers test and rebuild the database consistently  
+
+XAMPP makes the system easy to deploy on any Windows machine without complex setup.
+
+---
+
+### **5. Real-Time Integration Layer (Access ↔ ODBC ↔ MariaDB)**
+Communication between the frontend and backend occurs through an ODBC connection.
+
+This layer provides:
+
+- **Live database reads/writes**  
+- **Automatic form updates when SQL data changes**  
+- **User-friendly Access UI powered by real SQL queries**  
+- **Secure, controlled data flow from Access to the database**  
+
+This hybrid architecture combines a desktop-friendly interface with SQL-level stability and structure.
+
+---
+
+### **6. Documentation, Scripts, and Demo Assets**
+The repository includes supporting materials such as:
+
+- **GIFs and screen recordings** demonstrating terminal queries and Access form usage  
+- **Schema scripts** for reproducing the database  
+- **Notepad++ SQL development examples**  
+- **Usage examples and test query outputs**  
+
+These assets help users understand the system structure and how to deploy or modify it.
+
+---
+
+## Key Features
 
 ```javascript
 const UserForm = () => {
