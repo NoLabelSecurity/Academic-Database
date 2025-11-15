@@ -6,12 +6,6 @@
     height="200">
 </p>
 
-<p align="center">
-  <a href="#project-description">Project Description</a> •
-  <a href="#key-features">Key Features</a> •
-  <a href="#technology-stack">Tech Stack</a> •
-</p>
-
 <!-- Demo GIFs Side by Side -->
 <p align="center">
   <table>
@@ -31,6 +25,17 @@
     </tr>
   </table>
 </p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/MS%20Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white" />
+  <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" />
+  <img src="https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=database&logoColor=white" />
+  <img src="https://img.shields.io/badge/XAMPP-FB7A24?style=for-the-badge&logo=xampp&logoColor=white" />
+  <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" />
+  <img src="https://img.shields.io/badge/Notepad++-90E59A?style=for-the-badge&logo=notepadplusplus&logoColor=black" />
+  <img src="https://img.shields.io/badge/ODBC-006699?style=for-the-badge&logo=databricks&logoColor=white" />
+</p>
+
 
 ## Project Description
 
@@ -154,104 +159,84 @@ These assets help users understand the system structure and how to deploy or mod
 
 ## Key Features
 
-```javascript
-const UserForm = () => {
-  const [name, setName] = useState('');
+### 📁 1. User-Friendly Access Frontend
+AcademicDB provides a structured Microsoft Access interface for managing academic information.  
+Users can easily enter, update, and browse student, faculty, course, and enrollment data through well-organized forms, dropdowns, and navigation menus—without needing SQL knowledge.
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Hello, ${name}`);
-  };
+---
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter your name"
-      />
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
+### 🗄️ 2. Clean, Normalized Relational Database (MariaDB)
+The backend is built on a properly normalized MariaDB schema, ensuring data consistency and logical relationships across all academic entities.  
+The database design includes tables for Students, Courses, Subjects, Departments, Faculty, and Enrollment records.
 
-export default UserForm;
+#### **Relationship Diagram (ERD View)**  
+This screenshot shows the actual database relationships used in AcademicDB:
 
-```
+<p align="center">
+  <img src="Assets/screenshots/relationship_view.png" alt="AcademicDB Relationship View" width="700">
+</p>
 
-  
-ToggleMessage
+---
 
-```javascript
-const ToggleMessage = () => {
-  const [isVisible, setIsVisible] = useState(false);
+### 🧾 3. SQL Script–Driven Setup
+All tables, fields, constraints, and sample data are created using manual SQL scripts.  
+Developers can rebuild the entire schema using the MySQL terminal:
 
-  return (
-    
-<div>
-      <button onClick={() => setIsVisible(!isVisible)}>
-        {isVisible ? 'Hide' : 'Show'} Message
-      </button>
-      {isVisible && 
-<p>This is a toggled message!</p>
-}
-    </div>
-
-  );
-};
-
-export default ToggleMessage;
-
-```
-
-## Key Features
-
-This project replicates the core functionalities of YouTube, including:
-
-*   **Video Streaming**: Users can upload and stream high-definition videos.
-*   **User Authentication**: Secure sign-up/login using OAuth2.0.
-*   **Video Recommendations**: A recommendation system that suggests relevant content based on user preferences.
-*   **Cloud Integration**: Uploaded videos are stored in the cloud, with seamless playback across devices.
-
-This project showcases a comprehensive technology stack involving full-stack web development and cloud services.
-
-## Tech Stack
-
-**Frontend**:  
-[![Access][Access-badge]][Access-url]
-
-**Backend**:  
-[![MariaDB][MariaDB-badge]][MariaDB-url]  
-[![SQL][SQL-badge]][SQL-url]
-
-**Cloud & DevOps**:  
-[![XAMPP][XAMPP-badge]][XAMPP-url]  
-[![Windows][Windows-badge]][Windows-url]
-
-**Other**:  
-[![Notepad++][NotepadPP-badge]][NotepadPP-url]  
-[![ODBC][ODBC-badge]][ODBC-url]
+mysql -u root -p
+SOURCE schema.sql;
+SOURCE inserts.sql;
 
 
-[Access-badge]: https://img.shields.io/badge/MS%20Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white
-[Access-url]: https://www.microsoft.com/en-us/microsoft-365/access
+This keeps the project transparent, reproducible, and easy to modify.
 
-[MariaDB-badge]: https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white
-[MariaDB-url]: https://mariadb.org/
+---
 
-[XAMPP-badge]: https://img.shields.io/badge/XAMPP-FB7A24?style=for-the-badge&logo=xampp&logoColor=white
-[XAMPP-url]: https://www.apachefriends.org/
+### 🔌 4. Real-Time Access ↔ MariaDB Integration (ODBC)
+The frontend interacts with the SQL backend through an ODBC DSN connection, enabling:
 
-[NotepadPP-badge]: https://img.shields.io/badge/Notepad++-90E59A?style=for-the-badge&logo=notepadplusplus&logoColor=black
-[NotepadPP-url]: https://notepad-plus-plus.org/
+- Live read/write operations  
+- Auto-updating forms  
+- Reliable data synchronization  
 
-[SQL-badge]: https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=database&logoColor=white
-[SQL-url]: https://en.wikipedia.org/wiki/SQL
+This hybrid design combines the simplicity of Access with the power of a real database engine.
 
-[Windows-badge]: https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white
-[Windows-url]: https://www.microsoft.com/windows
+---
 
-[ODBC-badge]: https://img.shields.io/badge/ODBC-006699?style=for-the-badge&logo=databricks&logoColor=white
-[ODBC-url]: https://learn.microsoft.com/en-us/sql/odbc/microsoft/open-database-connectivity-odbc
+### 🖥️ 5. Local-First, Secure, and Offline Ready
+Because AcademicDB runs entirely on XAMPP/MariaDB and MS Access:
+
+- No internet is required  
+- Data remains private and under local control  
+- Deployment is fast and simple  
+- Perfect for small institutions, labs, or training environments  
+
+---
+
+### 🔍 6. Built-In Queries & Data Filtering
+AcademicDB includes pre-built Access and SQL queries for viewing and analyzing academic records.  
+Users can quickly filter students, lookup course assignments, check enrollment counts, and generate useful summaries.
+
+---
+
+### 📑 7. Printable Academic Reports
+Access reporting tools allow staff to generate:
+
+- Student lists  
+- Course catalogs  
+- Faculty rosters  
+- Enrollment summaries  
+
+Reports can be printed or exported for offline use.
+
+---
+
+### 🚀 8. Easy to Extend
+The system is structured so new modules can be added easily, such as schedules, attendance, or grade tracking.  
+Both the Access frontend and SQL backend are designed with clarity in mind, making customization straightforward.
+
+
+
+---
+
+
 
