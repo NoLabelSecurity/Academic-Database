@@ -106,12 +106,12 @@ This includes:
 - **Data Export and Verification Scripts**  
 
 Scripts are executed via the MySQL terminal using commands like:
+
   mysql -u root -p
   SOURCE /path/to/schema.sql;
   SOURCE /path/to/insert_data.sql;
   SOURCE /path/to/select_all.sql;
-
-
+  
 This ensures the database is fully reproducible, version-controlled, and portable.
 
 ---
@@ -186,8 +186,46 @@ mysql -u root -p
 SOURCE schema.sql;
 SOURCE inserts.sql;
 
-
 This keeps the project transparent, reproducible, and easy to modify.
+
+#### **Schema Creation Example (create_db.sql)**
+Below is a sample of the core table definitions that build the AcademicDB structure:
+
+    CREATE TABLE Person (
+        Per_ID INT AUTO_INCREMENT PRIMARY KEY,
+        Per_FirstName VARCHAR(20) NOT NULL,
+        Per_LastName VARCHAR(20) NOT NULL,
+        Per_Suffix VARCHAR(20),
+        Gen_Code CHAR(1),
+        Per_DOB DATE NOT NULL
+    );
+    
+    CREATE TABLE Course (
+        CRS_ID INT AUTO_INCREMENT PRIMARY KEY,
+        Crs_Num INT(3) NOT NULL,
+        Sub_Abbr CHAR(3) NOT NULL,
+        Crs_Desc VARCHAR(200),
+        Crs_Title VARCHAR(25) NOT NULL,
+        CrS_Hrs INT NOT NULL
+    );
+
+These CREATE TABLE statements define the fundamental entities used throughout the database.
+
+#### **Sample Data Insert Example (insert_data.sql)**
+Your database also includes pre-built test data for immediate use inside the Access frontend:
+
+    INSERT INTO Person (Per_ID, Per_FirstName, Per_LastName, Per_Suffix, Gen_Code, Per_DOB) VALUES
+    (1, 'John', 'Doe', NULL, 'M', '1990-01-01'),
+    (2, 'Sally', 'Smith', NULL, 'F', '1995-02-15');
+
+    INSERT INTO Phone (Pho_AreaCode, Pho_Exchange, Pho_Extension, Per_ID, CT_ID) VALUES
+    (864, 940, 1234, 1, 1),
+    (864, 657, 0152, 1, 2);
+
+    
+
+This approach ensures every developer or tester starts with a consistent and fully linked dataset, making debugging and UI demonstrations significantly easier.
+
 
 ---
 
